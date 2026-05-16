@@ -1,8 +1,8 @@
-# **SWIFT**
+# **PACKROUTE**
 
 ### **DESCRIPTION**
 
-Swift is an android mobile application developed using Java in Android Studio. The app provides door-to-door package delivery service with Realtime delivery location tracking to its users. The app leverages modern Android development practices, a clean UI, and intuitive user experience.
+PackRoute is an android mobile application developed using Java in Android Studio. The app provides door-to-door package delivery service with Realtime delivery location tracking to its users. The app leverages modern Android development practices, a clean UI, and intuitive user experience.
 
 ### **📱 FEATURES**
 
