@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentUserNewDelivery"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".user.UserDeliveryFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="New Delivery"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/bg"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:paddingBottom="60dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pickup Details"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg"
+                android:drawableLeft="@drawable/icon_1"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/bg"/>
+
+            <EditText
+                android:id="@+id/etPickAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="18sp"
+                android:hint="Address"
+                android:drawableLeft="@drawable/location"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/bg"/>
+
+            <EditText
+                android:id="@+id/etPickPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="phone"
+                android:textSize="18sp"
+                android:hint="Phone Number"
+                android:drawableLeft="@drawable/mobile"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/bg"/>
+
+            <EditText
+                android:id="@+id/etPickNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:hint="Note: Apartment, Office, etc."/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Delivery Details"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg"
+                android:drawableLeft="@drawable/icon_2"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/bg"/>
+
+            <EditText
+                android:id="@+id/etDelvAdd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="18sp"
+                android:hint="Address"
+                android:drawableLeft="@drawable/location"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/bg"/>
+
+            <EditText
+                android:id="@+id/etDelvPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="phone"
+                android:textSize="18sp"
+                android:hint="Phone Number"
+                android:drawableLeft="@drawable/mobile"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/bg"/>
+
+            <EditText
+                android:id="@+id/etDelvNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="16sp"
+                android:hint="Note: Apartment, Office, etc."/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Package Details"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:textColor="@color/bg"
+                android:drawableLeft="@drawable/icon_3"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/bg"/>
+
+            <Button
+                android:id="@+id/btnAiSizeEstimator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Auto-Estimate Size (AI)"
+                android:textAllCaps="false"
+                android:drawableLeft="@android:drawable/ic_menu_camera"
+                android:drawablePadding="8dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:backgroundTint="#4CAF50"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvEstimatedSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Estimated: Not set"
+                android:gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:textColor="@color/bg"
+                android:textStyle="italic"/>
+
+            <EditText
+                android:id="@+id/etPackDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:inputType="text"
+                android:textSize="18sp"
+                android:hint="What are you sending ?"
+                android:drawableLeft="@drawable/newdelivery"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/bg"/>
+
+            <Button
+                android:id="@+id/btnCreateDelivery"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:text="Create Delivery"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/bg"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

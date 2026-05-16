@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".user.UserAccountFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="My Account"
+        android:gravity="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/bg"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="Name"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:textColor="@color/bg"/>
+
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:hint="Name"
+        android:inputType="text"
+        android:drawableRight="@drawable/edit"
+        android:drawableTint="@color/bg"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="Mobile Number"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:textColor="@color/bg"/>
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        android:drawableRight="@drawable/edit"
+        android:drawableTint="@color/bg"/>
+
+    <Button
+        android:id="@+id/btnSaveChanges"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Save Changes"
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/bg"/>
+
+</LinearLayout>

@@ -1,0 +1,19 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SwiftDelivery" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:fontFamily">@font/frisco_b</item>
+    </style>
+
+    <style name="Theme.SwiftDelivery" parent="Base.Theme.SwiftDelivery">
+        <item name="android:fontFamily">@font/frisco_b</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="ThemeOverlay.AppCompat.navTheme">
+        <item name="colorPrimary">#86c43b</item>
+        <item name="android:fontFamily">@font/frisco_b</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

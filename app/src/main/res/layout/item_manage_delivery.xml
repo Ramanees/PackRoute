@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="User Details"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/txtUserID_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User ID"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/txtUserName_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/txtUserPhone_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="User Phone"
+        android:textSize="12sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="Delivery Agent Details"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/txtAgentID_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agent ID"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/txtAgentName_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agent Name"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/txtAgentPhone_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="Agent Phone"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="Delivery Details"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/txtDeliveryDate_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delivery Date"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/txtPickupLocation_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pickup Location"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/txtDeliveryLocation_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delivery Location"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/txtPackageDetails_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Package Details"
+        android:textSize="12sp"/>
+
+    <EditText
+        android:id="@+id/txtDeliveryStatus_Admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Delivery Status"
+        android:textSize="12sp"
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:enabled="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <Button
+            android:id="@+id/btnEdit_Admin"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textSize="15sp"
+            android:backgroundTint="@color/black"/>
+
+    </LinearLayout>
+
+</LinearLayout>

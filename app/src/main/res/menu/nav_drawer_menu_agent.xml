@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home_agent"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_myacnt_agent"
+            android:icon="@drawable/account"
+            android:title="My Account" />
+        <item
+            android:id="@+id/nav_availdelv_agent"
+            android:icon="@drawable/twowheeler"
+            android:title="Available Deliveries" />
+        <item
+            android:id="@+id/nav_active_agent"
+            android:icon="@android:drawable/ic_dialog_map"
+            android:title="Active Deliveries" />
+        <item
+            android:id="@+id/nav_history_agent"
+            android:icon="@drawable/history"
+            android:title="Delivery History" />
+        <item
+            android:id="@+id/nav_support_agent"
+            android:icon="@drawable/contactsupport"
+            android:title="Support" />
+        <item
+            android:id="@+id/nav_logout_agent"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+
+    </group>
+
+</menu>

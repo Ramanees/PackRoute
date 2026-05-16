@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/txtName_User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:textColorHint="@color/black"
+        android:textSize="14sp"
+        android:inputType="text"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/txtEmail_User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textColorHint="@color/black"
+        android:textSize="13sp"
+        android:inputType="text"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/txtPhone_User"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone"
+        android:textColorHint="@color/black"
+        android:textSize="13sp"
+        android:inputType="text"
+        android:enabled="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <Button
+            android:id="@+id/btnEdit_User"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textSize="15sp"
+            android:backgroundTint="@color/black"/>
+
+        <Button
+            android:id="@+id/btnDelete_User"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_marginStart="10dp"
+            android:textSize="15sp"
+            android:backgroundTint="@color/black"/>
+    </LinearLayout>
+
+</LinearLayout>

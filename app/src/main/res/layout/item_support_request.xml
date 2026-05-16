@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:padding="10dp"
+    android:elevation="4dp">
+
+    <TextView
+        android:id="@+id/txtUID_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="UID"
+        android:textSize="13sp"/>
+
+    <TextView
+        android:id="@+id/txtName_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Name"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/txtEmail_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Email"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/txtSubject_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Subject"
+        android:textSize="12sp"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:overScrollMode="ifContentScrolls"/>
+
+    <TextView
+        android:id="@+id/txtQuestion_support"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Question"
+        android:textSize="12sp"
+        android:scrollbars="vertical"
+        android:scrollHorizontally="false"
+        android:overScrollMode="ifContentScrolls"/>
+
+    <Button
+        android:id="@+id/btnReply_support"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reply"
+        android:textSize="14sp"
+        android:backgroundTint="@color/black" />
+
+</LinearLayout>

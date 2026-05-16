@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragmentAdminHome"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/white"
+    tools:context=".admin.AdminHomeFragment">
+
+    <TextView
+        android:id="@+id/tv_DateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:foregroundGravity="center"
+        android:textAlignment="center"
+        android:text="DATE AND TIME"
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/btnManageUsers_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/account"
+        android:text="Manage Users"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnManageAgents_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/twowheeler"
+        android:drawableTint="@color/black"
+        android:text="Manage Delivery Agents"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnManageDelivery_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/manage_delivery"
+        android:drawableTint="@color/black"
+        android:text="Manage Deliveries"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnSupport_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/support_agent"
+        android:drawableTint="@color/black"
+        android:text="Support Requests"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnInsights_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/analytics"
+        android:drawableTint="@color/black"
+        android:text="Application Insights"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnReports_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/reports"
+        android:drawableTint="@color/black"
+        android:text="Generate Reports"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+</LinearLayout>

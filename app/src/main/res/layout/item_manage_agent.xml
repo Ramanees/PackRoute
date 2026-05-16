@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <EditText
+        android:id="@+id/txtName_Agent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:textSize="14sp"
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/txtEmail_Agent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:textSize="12sp"
+        android:textColorHint="@color/black"
+        android:inputType="textEmailAddress"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/txtPhone_Agent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone"
+        android:textSize="12sp"
+        android:textColorHint="@color/black"
+        android:inputType="phone"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/txtResident_Agent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Resident ID Number"
+        android:textSize="12sp"
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/txtVehicleType_Agent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Vehicle Type"
+        android:textSize="12sp"
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:enabled="false"/>
+
+    <EditText
+        android:id="@+id/txtVehicleRegistration_Agent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Vehicle Registration"
+        android:textSize="12sp"
+        android:textColorHint="@color/black"
+        android:inputType="text"
+        android:enabled="false"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <Button
+            android:id="@+id/btnEdit_Agent"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textSize="15sp"
+            android:backgroundTint="@color/black"/>
+
+        <Button
+            android:id="@+id/btnDelete_Agent"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:layout_marginStart="10dp"
+            android:textSize="15sp"
+            android:backgroundTint="@color/black"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/item_history_agent_deliveryId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textSize="18sp"
+        android:hint="Delivery Number"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:background="@color/bg2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="User Details"
+        android:textSize="16sp"
+        android:textColor="@color/bg"/>
+
+    <TextView
+        android:id="@+id/item_history_agent_userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Name:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/account"
+        android:drawableTint="@color/bg"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:id="@+id/item_history_agent_userMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mobile Number:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/mobile"
+        android:drawableTint="@color/bg"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Delivery Details"
+        android:textSize="16sp"
+        android:textColor="@color/bg2"/>
+
+    <TextView
+        android:id="@+id/item_history_agent_pickupAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Pickup Address:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/location"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:id="@+id/item_history_agent_deliveryAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Delivery Address: "
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/location"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:id="@+id/item_history_agent_packageDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Package Summary:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/newdelivery"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:id="@+id/item_history_agent_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:hint="Status: "
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/status"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+</LinearLayout>

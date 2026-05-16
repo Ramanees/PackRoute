@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recycler_view_item_agent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/delivery_item_deliveryId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textSize="18sp"
+        android:hint="Delivery Number"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:background="@color/bg2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="User Details"
+        android:textSize="16sp"
+        android:textColor="@color/bg"/>
+
+    <TextView
+        android:id="@+id/delivery_item_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Name:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/account"
+        android:drawableTint="@color/bg"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:id="@+id/delivery_item_usermobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Mobile Number:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/mobile"
+        android:drawableTint="@color/bg"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Pickup Details"
+        android:textSize="16sp"
+        android:textColor="@color/bg2"/>
+
+    <TextView
+        android:id="@+id/delivery_item_pickupaddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Pickup Address:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/location"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:id="@+id/delivery_item_pickupcontact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Pickup Contact:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/location"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:id="@+id/delivery_item_packagedetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Package Summary:"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/newdelivery"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Delivery Details"
+        android:textSize="16sp"
+        android:textColor="@color/bg2"/>
+
+    <TextView
+        android:id="@+id/delivery_item_deliveryaddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Delivery Address: "
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/location"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+    <TextView
+        android:id="@+id/delivery_item_deliverycontact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:hint="Delivery Contact: "
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:drawableLeft="@drawable/mobile"
+        android:drawableTint="@color/bg2"
+        android:drawablePadding="4dp"/>
+
+    <Button
+        android:id="@+id/btnAcceptDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:text="Accept Delivery"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/bg2"/>
+
+</LinearLayout>

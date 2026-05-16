@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home_admin"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_mngUsers_admin"
+            android:icon="@drawable/account"
+            android:title="Manage Users" />
+        <item
+            android:id="@+id/nav_mngAgents_admin"
+            android:icon="@drawable/twowheeler"
+            android:title="Manage Delivery Agents" />
+        <item
+            android:id="@+id/nav_mngDeliveries_admin"
+            android:icon="@drawable/manage_delivery"
+            android:title="Manage Deliveries" />
+        <item
+            android:id="@+id/nav_support_admin"
+            android:icon="@drawable/support_agent"
+            android:title="Support Requests" />
+        <item
+            android:id="@+id/nav_reports_admin"
+            android:icon="@drawable/reports"
+            android:title="Generate Reports" />
+        <item
+            android:id="@+id/nav_insights_admin"
+            android:icon="@drawable/analytics"
+            android:title="Application Insights" />
+        <item
+            android:id="@+id/nav_logout_admin"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+
+    </group>
+
+</menu>

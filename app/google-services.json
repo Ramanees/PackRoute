@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "95826653113",
+    "project_id": "packroute2",
+    "storage_bucket": "packroute2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:95826653113:android:e9d5e616b6b16537859068",
+        "android_client_info": {
+          "package_name": "com.example.swiftdelivery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHp3KlBMxiXZ4Z0XaV8zE2ckUJepAPlXc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

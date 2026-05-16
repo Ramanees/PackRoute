@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher_swift"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_swift_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SwiftDelivery"
+        tools:targetApi="31">
+        <activity
+            android:name=".agent.AgentDeliveryHistoryAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminSupportAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminManageDeliveryAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminManageAgentAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminManageUserAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminNavHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LiveChatAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".LiveChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".agent.LocationForegroundService"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserDeliveryHistoryAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".agent.AgentAvailableDeliveryAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserTrackingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".agent.AgentNavHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".agent.AgentRegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".agent.AgentLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserNavHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserRegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".user.UserLoginActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".agent.LocationForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="location"
+            android:permission="android.permission.FOREGROUND_SERVICE" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD8ossHP9yR2IpqtNzIhRBMUrqWfemCMbA" />
+    </application>
+
+</manifest>

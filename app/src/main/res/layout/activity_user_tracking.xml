@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activityUserTracking"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".user.UserTrackingActivity">
+
+    <fragment
+        android:id="@+id/fragment_map_tracking"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:visibility="visible"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+    <TextView
+        android:id="@+id/tv_userDeliveryId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:paddingTop="5dp"
+        android:textSize="20sp"
+        android:hint="Delivery ID"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:background="@color/bg"/>
+
+    <TextView
+        android:id="@+id/tv_deliveryStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:textSize="18sp"
+        android:hint="Delivery Status"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:background="@color/bg"/>
+
+    <ScrollView
+        android:id="@+id/scrollView_userTracking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginBottom="8dp"
+                android:text="Delivery Agent Details"
+                android:textSize="18sp"
+                android:textColor="@color/bg"/>
+
+            <TextView
+                android:id="@+id/tv_agentName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:hint="Name:"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/account"
+                android:drawableTint="@color/bg"
+                android:drawablePadding="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_agentMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:hint="Mobile Number:"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/mobile"
+                android:drawableTint="@color/bg"
+                android:drawablePadding="4dp"/>
+
+            <TextView
+                android:id="@+id/tv_agentVehicleNumberCar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Vehicle Number:"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/car"
+                android:drawableTint="@color/bg"
+                android:drawablePadding="4dp"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/tv_agentVehicleNumberBike"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Vehicle Number:"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/twowheeler"
+                android:drawableTint="@color/bg"
+                android:drawablePadding="4dp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/imgBtn_UserChat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/chat"
+        app:tint="@color/bg"
+        android:backgroundTint="@color/white"
+        android:contentDescription="Live Chat with Delivery Agent"/>
+    <TextView
+        android:id="@+id/tv_ChatWithAgent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-50dp"
+        android:layout_gravity="right"
+        android:layout_marginEnd="75dp"
+        android:text="Chat with Delivery Agent"
+        android:textSize="15sp"
+        android:textColor="@color/bg"/>
+
+    <LinearLayout
+        android:id="@+id/deliveredLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/delivered_anim"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Your Package has Been Delivered !"
+            android:textSize="30sp"
+            android:textColor="@color/bg"/>
+
+    </LinearLayout>
+
+</LinearLayout>
