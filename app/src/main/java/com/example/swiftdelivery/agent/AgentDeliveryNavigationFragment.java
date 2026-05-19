@@ -19,16 +19,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.swiftdelivery.LiveChatActivity;
 import com.example.swiftdelivery.R;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,18 +36,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ncorti.slidetoact.SlideToActView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 public class AgentDeliveryNavigationFragment extends Fragment{
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
-    TextView tv_deliveryId, tv_userName, tv_userMobile;
-    Button btn_startNav;
+    TextView tv_deliveryId, tv_userName, tv_userMobile, tv_status;
+    Button btn_startNav, btnBackHome;
     ImageButton btn_Chat;
+    EditText etVerifyOtp;
+    View layoutHandoff, layoutFinished;
     SlideToActView sliderPickedUp, sliderDelivered;
-    private String agentId, deliveryId, currentDeliveryState;;
+    private String agentId, deliveryId, currentDeliveryState, correctOtp;
     private double pickupLat, pickupLong, deliveryLat, deliveryLong;
     private DatabaseReference reference;
-    private FirebaseAuth mAuth;
-    private static final String API_KEY = "AIzaSyDw_briairLHtt8eaTFmSmMfCr2XldEtEw";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,61 +64,72 @@ public class AgentDeliveryNavigationFragment extends Fragment{
         tv_deliveryId = view.findViewById(R.id.tv_deliveryId);
         tv_userName = view.findViewById(R.id.tv_username);
         tv_userMobile = view.findViewById(R.id.tv_usermobile);
+        tv_status = view.findViewById(R.id.tv_status_nav);
+        
         sliderPickedUp = view.findViewById(R.id.slideToAct_PickedUp);
         sliderDelivered = view.findViewById(R.id.slideToAct_Delivered);
         btn_startNav = view.findViewById(R.id.btn_startNavigation);
         btn_Chat = view.findViewById(R.id.imgBtn_AgentChat);
+        etVerifyOtp = view.findViewById(R.id.etVerifyOtp);
+        layoutHandoff = view.findViewById(R.id.layoutHandoff);
+        layoutFinished = view.findViewById(R.id.layoutFinished);
+        btnBackHome = view.findViewById(R.id.btnBackHome);
 
-        mAuth = FirebaseAuth.getInstance();
-        agentId = mAuth.getCurrentUser().getUid();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) agentId = user.getUid();
 
         Bundle bundle = getArguments();
-        if (bundle != null && bundle.containsKey("DELIVERY_ID")) {
-            deliveryId = bundle.getString("DELIVERY_ID");
-            if (deliveryId != null) {
-                tv_deliveryId.setText("Delivery ID: " + deliveryId);
-            } else {
-                Toast.makeText(getContext(), "Invalid delivery ID.", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            Toast.makeText(getContext(), "Delivery ID is missing.", Toast.LENGTH_SHORT).show();
+        if (bundle != null) deliveryId = bundle.getString("DELIVERY_ID");
+
+        if (deliveryId == null) {
+            Toast.makeText(getContext(), "Error: Delivery ID not found.", Toast.LENGTH_SHORT).show();
+            return view;
         }
 
         reference = FirebaseDatabase.getInstance().getReference("Deliveries").child(deliveryId);
 
         currentDeliveryState = getStateFromPreferences();
-        updateUIBasedOnState();
-
+        
         fetchDeliveryDetails();
 
         btn_startNav.setOnClickListener( v -> {
-            currentDeliveryState = "Initial";
-            saveStateToPreferences(currentDeliveryState);
-            navigateToLocation(pickupLat, pickupLong);
+            if ("Initial".equals(currentDeliveryState)) {
+                navigateToLocation(pickupLat, pickupLong);
+            } else {
+                navigateToLocation(deliveryLat, deliveryLong);
+            }
             checkLocationPermission();
-            btn_startNav.setVisibility(View.GONE);
-            sliderPickedUp.setVisibility(View.VISIBLE);
         });
 
         sliderPickedUp.setOnSlideCompleteListener(v -> {
             currentDeliveryState = "GoingToDeliver";
             saveStateToPreferences(currentDeliveryState);
             updateDeliveryStatus("Going to Deliver");
-            navigateToLocation(deliveryLat, deliveryLong);
-            sliderPickedUp.setVisibility(View.GONE);
-            sliderDelivered.setVisibility(View.VISIBLE);
+            updateUIBasedOnState();
         });
 
         sliderDelivered.setOnSlideCompleteListener(v -> {
-            currentDeliveryState = "Delivered";
-            saveStateToPreferences(currentDeliveryState);
-            updateDeliveryStatus("Delivered");
-            if (isAdded() && getContext() != null) {
-                stopLocationUpdateService();
-                requireActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container_agent, new AgentAvailableDeliveryFragment()).addToBackStack(null).commit();
+            String enteredOtp = etVerifyOtp.getText().toString().trim();
+            if (enteredOtp.length() < 4) {
+                sliderDelivered.resetSlider();
+                Toast.makeText(getContext(), "Please enter the 4-digit OTP first.", Toast.LENGTH_SHORT).show();
+            } else if (enteredOtp.equals(correctOtp)) {
+                currentDeliveryState = "Delivered";
+                saveStateToPreferences(currentDeliveryState);
+                updateDeliveryStatus("Delivered");
+                addEarningToWallet(5.00); 
+                updateUIBasedOnState();
             } else {
-                Log.e("AgentDeliveryFragment", "Fragment is not attached to context.");
+                sliderDelivered.resetSlider();
+                Toast.makeText(getContext(), "Incorrect OTP code!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnBackHome.setOnClickListener(v -> {
+            if (isAdded()) {
+                requireActivity().getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container_agent, new AgentActiveDeliveryFragment()).commit();
             }
         });
 
@@ -123,33 +140,73 @@ public class AgentDeliveryNavigationFragment extends Fragment{
             startActivity(int_chat);
         });
 
+        updateUIBasedOnState();
         return view;
     }
 
     private void fetchDeliveryDetails() {
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    String userName = snapshot.child("UserName").getValue(String.class);
-                    String userMobile = snapshot.child("UserMobile").getValue(String.class);
-                    pickupLat = snapshot.child("PickupLatitude").getValue(Double.class);
-                    pickupLong = snapshot.child("PickupLongitude").getValue(Double.class);
-                    deliveryLat = snapshot.child("DeliveryLatitude").getValue(Double.class);
-                    deliveryLong = snapshot.child("DeliveryLongitude").getValue(Double.class);
+                if (snapshot.exists() && isAdded()) {
+                    String dbStatus = snapshot.child("Status").getValue(String.class);
+                    correctOtp = snapshot.child("Otp").getValue(String.class);
+                    
+                    tv_userName.setText("Customer: " + snapshot.child("UserName").getValue(String.class));
+                    tv_userMobile.setText("Mobile: " + snapshot.child("UserMobile").getValue(String.class));
+                    tv_deliveryId.setText("Order: " + deliveryId.substring(Math.max(0, deliveryId.length() - 8)));
+                    tv_status.setText("Current Phase: " + dbStatus);
 
-                    tv_userName.setText("Name: " + userName);
-                    tv_userMobile.setText("Mobile Number: " + userMobile);
-                } else {
-                    Toast.makeText(getContext(), "Delivery details not found.", Toast.LENGTH_SHORT).show();
+                    Double pLat = snapshot.child("PickupLatitude").getValue(Double.class);
+                    Double pLng = snapshot.child("PickupLongitude").getValue(Double.class);
+                    Double dLat = snapshot.child("DeliveryLatitude").getValue(Double.class);
+                    Double dLng = snapshot.child("DeliveryLongitude").getValue(Double.class);
+                    pickupLat = pLat != null ? pLat : 0.0;
+                    pickupLong = pLng != null ? pLng : 0.0;
+                    deliveryLat = dLat != null ? dLat : 0.0;
+                    deliveryLong = dLng != null ? dLng : 0.0;
+
+                    if ("Delivered".equalsIgnoreCase(dbStatus)) {
+                        currentDeliveryState = "Delivered";
+                    } else if ("Going to Deliver".equalsIgnoreCase(dbStatus)) {
+                        currentDeliveryState = "GoingToDeliver";
+                    } else {
+                        currentDeliveryState = "Initial";
+                    }
+                    saveStateToPreferences(currentDeliveryState);
+                    updateUIBasedOnState();
                 }
             }
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("AgentDeliveryFragment", "Failed to fetch delivery details: " + error.getMessage());
-                Toast.makeText(getContext(), "Failed to load delivery details.", Toast.LENGTH_SHORT).show();
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
+    }
+
+    private void updateUIBasedOnState()
+    {
+        if (getView() == null || btn_startNav == null) return;
+
+        if ("Delivered".equals(currentDeliveryState)) {
+            btn_startNav.setVisibility(View.GONE);
+            sliderPickedUp.setVisibility(View.GONE);
+            sliderDelivered.setVisibility(View.GONE);
+            layoutHandoff.setVisibility(View.GONE);
+            layoutFinished.setVisibility(View.VISIBLE);
+        } else if ("GoingToDeliver".equals(currentDeliveryState)) {
+            btn_startNav.setVisibility(View.VISIBLE);
+            btn_startNav.setText("Navigate to Receiver");
+            sliderPickedUp.setVisibility(View.GONE);
+            sliderDelivered.setVisibility(View.VISIBLE);
+            layoutHandoff.setVisibility(View.VISIBLE);
+            layoutFinished.setVisibility(View.GONE);
+        } else {
+            btn_startNav.setVisibility(View.VISIBLE);
+            btn_startNav.setText("Navigate to Pickup");
+            sliderPickedUp.setVisibility(View.VISIBLE);
+            sliderDelivered.setVisibility(View.GONE);
+            layoutHandoff.setVisibility(View.GONE);
+            layoutFinished.setVisibility(View.GONE);
+        }
     }
 
     private void navigateToLocation(double latitude, double longitude)
@@ -160,112 +217,58 @@ public class AgentDeliveryNavigationFragment extends Fragment{
         if (mapIntent.resolveActivity(requireContext().getPackageManager()) != null) {
             startActivity(mapIntent);
         } else {
-            Toast.makeText(requireContext(), "Google Maps is not installed.", Toast.LENGTH_SHORT).show();
-            Uri playStoreUri = Uri.parse("market://details?id=com.google.android.apps.maps");
-            Intent playStoreIntent = new Intent(Intent.ACTION_VIEW, playStoreUri);
-            startActivity(playStoreIntent);
+            Toast.makeText(requireContext(), "Google Maps app required.", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void updateDeliveryStatus(String status)
     {
-        reference.child("Status").setValue(status).addOnSuccessListener(aVoid -> {
-            Context context = getContext();
-            if (context != null) {
-                Toast.makeText(getContext(), "Delivery status updated to: " + status, Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener( e -> {
-            Context context = getContext();
-            if (context != null) {
-                Toast.makeText(getContext(), "Failed to update status.", Toast.LENGTH_SHORT).show();
-            }
-
-        });
+        reference.child("Status").setValue(status);
     }
 
     private void checkLocationPermission() {
-        if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-        {
+        if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             startLocationUpdateService();
-            updateDeliveryStatus("Going to Pickup");
-        }
-        else
-        {
-            ActivityCompat.requestPermissions(
-                    requireActivity(),
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                    LOCATION_PERMISSION_REQUEST_CODE
-            );
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
-            boolean allGranted = true;
-            for (int result : grantResults) {
-                if (result != PackageManager.PERMISSION_GRANTED) {
-                    allGranted = false;
-                    updateDeliveryStatus("Going to Pickup");
-                    break;
-                }
-            }
-            if (allGranted) {
-                startLocationUpdateService();
-            } else {
-                Toast.makeText(getContext(), "Location permission is required to update your location.", Toast.LENGTH_SHORT).show();
-            }
+        } else {
+            ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         }
     }
 
     private void startLocationUpdateService() {
-        Intent int_locationService = new Intent(requireContext(), LocationForegroundService.class);
-        ContextCompat.startForegroundService(requireContext(), int_locationService);
-        Toast.makeText(requireContext(), "Starting location updates...", Toast.LENGTH_SHORT).show();
+        if (getContext() == null) return;
+        ContextCompat.startForegroundService(requireContext(), new Intent(requireContext(), LocationForegroundService.class));
     }
 
-    private void stopLocationUpdateService() {
-        Context context = getContext();
-        if (context != null) {
-            Intent int_stopLocationService = new Intent(requireContext(), LocationForegroundService.class);
-            context.stopService(int_stopLocationService);
-            Toast.makeText(requireContext(), "Location updates stopped.", Toast.LENGTH_SHORT).show();
-        }
+    private void addEarningToWallet(double amount) {
+        DatabaseReference agentRef = FirebaseDatabase.getInstance().getReference("Delivery Agents").child(agentId);
+        agentRef.child("WalletBalance").runTransaction(new com.google.firebase.database.Transaction.Handler() {
+            @NonNull
+            @Override
+            public com.google.firebase.database.Transaction.Result doTransaction(@NonNull com.google.firebase.database.MutableData currentData) {
+                Double balance = currentData.getValue(Double.class);
+                if (balance == null) balance = 0.0;
+                currentData.setValue(balance + amount);
+                return com.google.firebase.database.Transaction.success(currentData);
+            }
+            @Override
+            public void onComplete(@Nullable com.google.firebase.database.DatabaseError error, boolean committed, @Nullable DataSnapshot currentData) {
+                if (committed) {
+                    String date = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(new Date());
+                    agentRef.child("Earnings").push().setValue(new Earning(deliveryId, date, amount));
+                }
+            }
+        });
     }
 
     private void saveStateToPreferences(String state) {
-        requireActivity().getSharedPreferences("AgentDeliveryPrefs", Context.MODE_PRIVATE)
-                .edit()
-                .putString("deliveryState_" + deliveryId, state)
-                .apply();
+        if (getActivity() == null) return;
+        getActivity().getSharedPreferences("AgentPrefs", Context.MODE_PRIVATE)
+                .edit().putString("state_" + deliveryId, state).apply();
     }
 
     private String getStateFromPreferences() {
-        return requireActivity().getSharedPreferences("AgentDeliveryPrefs", Context.MODE_PRIVATE)
-                .getString("deliveryState_" + deliveryId, "Initial");
-    }
-
-    private void updateUIBasedOnState()
-    {
-        switch (currentDeliveryState) {
-            case "Initial":
-                btn_startNav.setVisibility(View.VISIBLE);
-                sliderPickedUp.setVisibility(View.GONE);
-                sliderDelivered.setVisibility(View.GONE);
-                break;
-            case "GoingToDeliver":
-                btn_startNav.setVisibility(View.GONE);
-                sliderPickedUp.setVisibility(View.GONE);
-                sliderDelivered.setVisibility(View.VISIBLE);
-                break;
-            case "Delivered":
-                btn_startNav.setVisibility(View.GONE);
-                sliderPickedUp.setVisibility(View.GONE);
-                sliderDelivered.setVisibility(View.GONE);
-                break;
-        }
+        if (getActivity() == null) return "Initial";
+        return getActivity().getSharedPreferences("AgentPrefs", Context.MODE_PRIVATE)
+                .getString("state_" + deliveryId, "Initial");
     }
 }

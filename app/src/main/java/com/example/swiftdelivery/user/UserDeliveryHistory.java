@@ -14,11 +14,17 @@ public class UserDeliveryHistory {
     private String DeliveryAddress;
     private String PackageDetails;
     private String Status;
+    private String Otp;
 
     public UserDeliveryHistory() {}
 
     public String getDeliveryID() { return deliveryID; }
     public void setDeliveryID(String deliveryID) { this.deliveryID = deliveryID; }
+
+    @PropertyName("Otp")
+    public String getOtp() { return Otp; }
+    @PropertyName("Otp")
+    public void setOtp(String otp) { Otp = otp; }
 
     @PropertyName("UserID")
     public String getUserID() { return UserID; }

@@ -1,257 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragmentAgentHome"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp"
-    tools:context=".agent.AgentHomeFragment">
+    android:fillViewport="true"
+    android:background="#F5F5F5">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/fragmentAgentHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="PackRoute AI"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textColor="@color/bg2"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:orientation="vertical"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/tvAgentName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:layout_marginBottom="50dp"
-        android:gravity="center"
-        android:text="AGENT NAME"
-        android:textSize="23sp"
-        android:textColor="@color/bg2" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:cardCornerRadius="16dp"
-        android:elevation="5dp"
-        android:backgroundTint="#E8F5E9">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="15dp">
+            android:text="PackRoute"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="@color/bg2"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"/>
 
-            <com.google.android.material.switchmaterial.SwitchMaterial
-                android:id="@+id/switchOnMyWay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="On My Way Mode"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#2E7D32"
-                app:thumbTint="#4CAF50"
-                app:trackTint="#A5D6A7" />
+        <TextView
+            android:id="@+id/tvAgentName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:text="AGENT NAME"
+            android:textSize="20sp"
+            android:textColor="@color/bg2" />
 
-            <TextView
-                android:id="@+id/tvOnMyWayStatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Automatically matching routes"
-                android:visibility="gone"
-                android:textColor="#43A047"
-                android:textSize="14sp"
-                android:layout_marginTop="5dp" />
-
-            <EditText
-                android:id="@+id/etDestination"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Where are you going?"
-                android:visibility="gone"
-                android:layout_marginTop="10dp" />
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:alignmentMode="alignMargins"
-        android:layout_gravity="center"
-        android:padding="10dp"
-        android:rowCount="2"
-        android:columnCount="2">
-
+        <!-- DASHBOARD & MODE CARD -->
         <androidx.cardview.widget.CardView
-            android:layout_width="10dp"
-            android:layout_height="180dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
+            android:id="@+id/cardOnMyWay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="8dp"
             app:cardCornerRadius="16dp"
             android:elevation="5dp"
-            android:backgroundTint="@color/bg2">
+            android:backgroundTint="#E8F5E9">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="10dp"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_height="wrap_content"
+                android:padding="15dp">
 
-                <ImageButton
-                    android:id="@+id/ib_agent_myacnt"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/account"
-                    android:backgroundTint="@color/white"/>
-                <TextView
-                    android:id="@+id/tv_myacnt"
+                <LinearLayout
+                    android:id="@+id/layoutDashboardLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/switchOnMyWay"
+                    android:orientation="vertical"
+                    android:paddingEnd="10dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Traveling Mode"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#2E7D32" />
+
+                    <TextView
+                        android:id="@+id/tvViewEarnings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="→ View Earnings Dashboard"
+                        android:textColor="#43A047"
+                        android:textSize="13sp"
+                        android:layout_marginTop="5dp" />
+                </LinearLayout>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switchOnMyWay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="My Account"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"/>
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    app:thumbTint="#4CAF50"
+                    app:trackTint="#A5D6A7" />
 
-            </LinearLayout>
-
+            </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="10dp"
-            android:layout_height="180dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            android:elevation="5dp"
-            android:backgroundTint="@color/bg2">
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alignmentMode="alignMargins"
+            android:padding="5dp"
+            android:rowCount="2"
+            android:columnCount="2">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="10dp">
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                android:elevation="5dp"
+                android:backgroundTint="@color/bg2">
 
-                <ImageButton
-                    android:id="@+id/ib_agent_availdelv"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/twowheeler"
-                    android:backgroundTint="@color/white"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    android:orientation="vertical"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/tv_availdelv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_gravity="center"
+                    <ImageButton
+                        android:id="@+id/ib_agent_myacnt"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/account"
+                        android:backgroundTint="@color/white"
+                        android:scaleType="fitCenter" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="My Account"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                android:elevation="5dp"
+                android:backgroundTint="@color/bg2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:gravity="center"
-                    android:text="Available Deliveries"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"/>
+                    android:padding="10dp">
 
-            </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/ib_agent_availdelv"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/twowheeler"
+                        android:backgroundTint="@color/white"
+                        android:scaleType="fitCenter" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Available"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                android:elevation="5dp"
+                android:backgroundTint="@color/bg2">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="10dp"
-            android:layout_height="180dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            android:elevation="5dp"
-            android:backgroundTint="@color/bg2">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="10dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="10dp">
+                    <ImageButton
+                        android:id="@+id/ib_agent_delvhist"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/history"
+                        android:backgroundTint="@color/white"
+                        android:scaleType="fitCenter" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="History"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-                <ImageButton
-                    android:id="@+id/ib_agent_delvhist"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/history"
-                    android:backgroundTint="@color/white"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="160dp"
+                android:layout_rowWeight="1"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="16dp"
+                android:elevation="5dp"
+                android:backgroundTint="@color/bg2">
 
-                <TextView
-                    android:id="@+id/tv_delvhist"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Delivery History"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="10dp">
 
-            </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/ib_agent_support"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/contactsupport"
+                        android:backgroundTint="@color/white"
+                        android:scaleType="fitCenter" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Support"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+        </GridLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="10dp"
-            android:layout_height="180dp"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="16dp"
-            android:elevation="5dp"
-            android:backgroundTint="@color/bg2">
+        <Button
+            android:id="@+id/btnAgentLogout"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center"
+            android:text="Logout"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/bg2"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="10dp">
-
-                <ImageButton
-                    android:id="@+id/ib_agent_support"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:background="@drawable/contactsupport"
-                    android:backgroundTint="@color/white"/>
-
-                <TextView
-                    android:id="@+id/tv_support"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="Support"
-                    android:textStyle="bold"
-                    android:textSize="15sp"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </GridLayout>
-
-    <Button
-        android:id="@+id/btnAgentLogout"
-        android:layout_width="250dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Logout"
-        android:textSize="25sp"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/bg2"/>
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

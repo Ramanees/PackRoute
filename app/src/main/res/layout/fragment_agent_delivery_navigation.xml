@@ -1,126 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp"
-    tools:context=".agent.AgentDeliveryNavigationFragment">
+    android:fillViewport="true"
+    android:background="#F8F9FA">
 
-    <TextView
-        android:id="@+id/tv_deliveryId"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="30dp"
-        android:paddingBottom="5dp"
-        android:paddingTop="5dp"
-        android:textSize="23sp"
-        android:hint="Delivery Number"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:background="@color/bg2"/>
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginBottom="8dp"
-        android:text="User Details"
-        android:textSize="20sp"
-        android:textColor="@color/bg2"/>
+        <TextView
+            android:id="@+id/tv_deliveryId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg2"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="ORDER DETAILS"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tv_username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:hint="Name:"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:drawableLeft="@drawable/account"
-        android:drawableTint="@color/bg2"
-        android:drawablePadding="4dp"/>
+        <TextView
+            android:id="@+id/tv_status_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phase: Active"
+            android:gravity="center"
+            android:padding="8dp"
+            android:textColor="#E65100"
+            android:textStyle="bold"
+            android:background="#FFF3E0"
+            android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:id="@+id/tv_usermobile"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mobile Number:"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:drawableLeft="@drawable/mobile"
-        android:drawableTint="@color/bg2"
-        android:drawablePadding="4dp"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+                <TextView
+                    android:id="@+id/tv_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/account"
+                    android:drawablePadding="10dp"
+                    android:text="Name Loading..."
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/tv_usermobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:drawableStart="@drawable/mobile"
+                    android:drawablePadding="10dp"
+                    android:text="Mobile Loading..."
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-    <ImageButton
-        android:id="@+id/imgBtn_AgentChat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/chat"
-        app:tint="@color/bg2"
-        android:backgroundTint="@color/white"
-        android:contentDescription="Live Chat with Delivery Agent"/>
-    <TextView
-        android:id="@+id/tv_ChatWithAgent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="-15dp"
-        android:layout_gravity="center"
-        android:text="Chat with User"
-        android:textSize="15sp"
-        android:textColor="@color/bg2"/>
+        <ImageButton
+            android:id="@+id/imgBtn_AgentChat"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            android:src="@drawable/chat"
+            app:tint="@color/bg2" />
 
-    <Button
-        android:id="@+id/btn_startNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Start Navigation"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/bg2"
-        android:visibility="visible"/>
+        <!-- ACTIONS -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="20dp"
+            android:background="#E0E0E0" />
 
-    <com.ncorti.slidetoact.SlideToActView
-        android:id="@+id/slideToAct_PickedUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:text="Confirm Pickup"
-        app:text_size="23sp"
-        app:text_style="bold"
-        app:text_color="@color/white"
-        app:slider_icon="@drawable/twowheeler"
-        app:slider_icon_color="@color/bg"
-        app:complete_icon="@drawable/newdelivery"
-        app:inner_color="@color/white"
-        app:outer_color="@color/bg2"
-        android:visibility="gone"/>
+        <Button
+            android:id="@+id/btn_startNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/bg2"
+            android:text="Open Maps Navigation"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <com.ncorti.slidetoact.SlideToActView
-        android:id="@+id/slideToAct_Delivered"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        app:text="Confirm Delivery"
-        app:text_size="23sp"
-        app:text_style="bold"
-        app:text_color="@color/white"
-        app:slider_icon="@drawable/twowheeler"
-        app:slider_icon_color="@color/bg"
-        app:complete_icon="@drawable/newdelivery"
-        app:inner_color="@color/white"
-        app:outer_color="@color/bg2"
-        android:visibility="gone"/>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/layoutHandoff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            app:cardBackgroundColor="#FFF3E0"
+            app:cardCornerRadius="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="VERIFY DELIVERY OTP"
+                    android:textColor="#E65100"
+                    android:textStyle="bold" />
+                <EditText
+                    android:id="@+id/etVerifyOtp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:hint="Type 4 digits"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:padding="12dp"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
+        <com.ncorti.slidetoact.SlideToActView
+            android:id="@+id/slideToAct_PickedUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:outer_color="@color/bg2"
+            app:text="Confirm Pickup" />
 
+        <com.ncorti.slidetoact.SlideToActView
+            android:id="@+id/slideToAct_Delivered"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:outer_color="#4CAF50"
+            app:text="Confirm Delivery" />
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/layoutFinished"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone"
+            android:padding="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Job Completed!"
+                android:textColor="#4CAF50"
+                android:textStyle="bold"
+                android:textSize="20sp"/>
+            <Button
+                android:id="@+id/btnBackHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Back to Job List"
+                android:backgroundTint="@color/bg2"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+</ScrollView>

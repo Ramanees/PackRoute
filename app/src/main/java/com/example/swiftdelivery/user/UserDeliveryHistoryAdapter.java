@@ -55,6 +55,7 @@ public class UserDeliveryHistoryAdapter extends RecyclerView.Adapter<UserDeliver
         holder.deliveryAddress.setText("Drop-off: " + delivery.getDeliveryAddress());
         holder.packageDetails.setText("Details: " + delivery.getPackageDetails());
         holder.status.setText("Status: " + delivery.getStatus());
+        holder.otp.setText("Secure OTP: " + (delivery.getOtp() != null ? delivery.getOtp() : "XXXX"));
 
         holder.btnTrackDelivery.setOnClickListener(v -> listener.onDeliveryClick(delivery));
     }
@@ -72,7 +73,7 @@ public class UserDeliveryHistoryAdapter extends RecyclerView.Adapter<UserDeliver
 
     public static class DeliveryViewHolder extends RecyclerView.ViewHolder
     {
-        TextView deliveryId, agentName, agentContact, pickupAddress, packageDetails, deliveryAddress, status;
+        TextView deliveryId, agentName, agentContact, pickupAddress, packageDetails, deliveryAddress, status, otp;
         Button btnTrackDelivery;
 
         public DeliveryViewHolder(View itemView)
@@ -85,6 +86,7 @@ public class UserDeliveryHistoryAdapter extends RecyclerView.Adapter<UserDeliver
             deliveryAddress = itemView.findViewById(R.id.history_item_deliveryaddress);
             packageDetails = itemView.findViewById(R.id.history_item_packageDetails);
             status = itemView.findViewById(R.id.history_item_status);
+            otp = itemView.findViewById(R.id.history_item_otp);
             btnTrackDelivery = itemView.findViewById(R.id.btnTrackDelivery);
         }
     }

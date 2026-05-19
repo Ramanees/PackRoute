@@ -113,6 +113,20 @@
         android:drawableTint="@color/bg"
         android:drawablePadding="4dp"/>
 
+    <TextView
+        android:id="@+id/history_item_otp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"
+        android:text="Secure OTP: XXXX"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#E91E63"
+        android:gravity="center"
+        android:background="#FCE4EC"
+        android:padding="8dp"/>
+
     <Button
         android:id="@+id/btnTrackDelivery"
         android:layout_width="wrap_content"
