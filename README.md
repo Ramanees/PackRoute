@@ -33,7 +33,7 @@ PackRoute is an android mobile application developed using Java in Android Studi
 ### **🧪 HOW TO RUN THE APP**
 
 1. Clone the Repository :
-   #### git clone https://github.com/viveikcs/Swift.git
+   #### git clone https://github.com/Ramanees/PackRoute.git
 3. Open the project in Android Studio
 4. Sync Gradle and build the project
 5. Run on an emulator or physical Android device
@@ -67,5 +67,4 @@ PackRoute is an android mobile application developed using Java in Android Studi
 - Google APIs
 - Community resources and open-source libraries
 
-### **📨 CONTACT**
-Feel free to reach out: viveikcs@gmail.com
+
